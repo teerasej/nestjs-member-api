@@ -5,7 +5,7 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+  <p align="center">Member Web API with Authentication (username/password, JWT)</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
@@ -22,9 +22,6 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
 
@@ -45,28 +42,62 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
 
-```bash
-# unit tests
-$ npm run test
+## Route 
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
+### GET /
+```
+hello
 ```
 
-## Support
+### POST /signup 
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Request body:
 
-## Stay in touch
+```json
+{
+  "email": "training@nextflow.in.th",
+  "password": "1234"
+}
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### POST /login 
+
+ต้องลงทะเบียนผ่าน `/signup` ให้เรียบร้อยก่อน
+
+Request body:
+```json
+{
+  "username": "training@nextflow.in.th",
+  "password": "1234"
+}
+```
+
+Response body:
+
+```json
+{
+  "access_token": "auto_generate_token"
+}
+```
+
+### GET /users/profile
+
+ต้องมีการแนบ token แบบ Bearer ใน Header ส่วน Authorization ด้วย
+
+Request Header:
+```
+Authorization: Bearer auto_generate_token
+```
+
+Response body:
+
+```json
+{
+  "email": "user_email"
+}
+```
 
 ## License
 
