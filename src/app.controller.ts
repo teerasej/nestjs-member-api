@@ -11,10 +11,10 @@ export class AppController {
   constructor(private readonly userService: UserService
     , private authService:AuthService) {}
 
-  // @Get()
-  // getHello(): string {
-  //   return this.appService.getHello();
-  // }
+  @Get()
+  getHello(): string {
+    return 'hello';
+  }
 
   @Post('signup')
   signup(@Body() user:UserDto) {
